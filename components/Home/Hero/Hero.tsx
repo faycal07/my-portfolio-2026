@@ -139,7 +139,7 @@ const Hero = () => {
         {/* buttons */}
         <div data-aos="fade-up" data-aos-delay="2000" className='flex flex-col sm:flex-row gap-4 justify-center'>
         <Button size={"lg"} asChild  className="w-fit mx-auto sm:mx-0 ">
-          <a href="#_"> 
+          <a href="#projects"> 
             <FolderOpen className='w-5 h-5 mr-2'/>
             View Projects
 
@@ -147,14 +147,14 @@ const Hero = () => {
 
         </Button>
 
-         <Button size={"lg"} asChild  className="w-fit mx-auto sm:mx-0 ">
-          <a href="#projects"> 
-            <Download className='w-5 h-5 mr-2'/>
-            Download CV
 
-          </a>
-
-        </Button>
+<Button size="lg" asChild className="w-fit mx-auto sm:mx-0">
+  <a href="/Faycal-Mebarki-CV-EN.pdf" download="Faycal-Mebarki-CV-EN.pdf">
+    <Download className="w-5 h-5 mr-2" />
+    Download CV
+  </a>
+</Button>
+       
 
         </div>
       </div>
