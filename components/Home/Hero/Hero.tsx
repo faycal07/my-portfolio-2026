@@ -29,7 +29,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <section id='home' className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[radial-gradient(circle,#a8ffdf_0%,#21596E_100%)] dark:bg-[radial-gradient(circle,rgba(26,75,107,1)_0%,rgba(5,110,87,1)_100%)]">
+    <section id='#home' className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[radial-gradient(circle,#a8ffdf_0%,#21596E_100%)] dark:bg-[radial-gradient(circle,rgba(26,75,107,1)_0%,rgba(5,110,87,1)_100%)]">
 
       {/* =========================================================
           BACKGROUND DECORATION
@@ -149,7 +149,7 @@ const Hero = () => {
 
 
 <Button size="lg" asChild className="w-fit mx-auto sm:mx-0">
-  <a href="/Faycal-Mebarki-CV-EN.pdf" download="Faycal-Mebarki-CV-EN.pdf">
+  <a href="/Mebarki-Faycal-CV-EN.pdf" download="Mebarki-Faycal-CV-EN.pdf">
     <Download className="w-5 h-5 mr-2" />
     Download CV
   </a>
