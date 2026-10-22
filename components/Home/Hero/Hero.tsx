@@ -29,7 +29,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <section id='#home' className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[radial-gradient(circle,#a8ffdf_0%,#21596E_100%)] dark:bg-[radial-gradient(circle,rgba(26,75,107,1)_0%,rgba(5,110,87,1)_100%)]">
+    <section id='home' className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[radial-gradient(circle,#a8ffdf_0%,#21596E_100%)] dark:bg-[radial-gradient(circle,rgba(26,75,107,1)_0%,rgba(5,110,87,1)_100%)]">
 
       {/* =========================================================
           BACKGROUND DECORATION
