@@ -1,13 +1,58 @@
+'use client'
+
 import SectionHeading from '@/components/Helper/SectionHeading'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { contactInfo, socialLinks } from '@/data'
-import { Send, Target } from 'lucide-react'
-import { it } from 'node:test'
-import React from 'react'
+import { Send} from 'lucide-react'
+
+import React, { useState } from "react";
 
 const Contact = () => {
+
+
+
+const [loading, setLoading] = useState(false);
+const [status, setStatus] = useState("");
+
+const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  setLoading(true);
+  setStatus("");
+
+  try {
+    const response = await fetch("/api/contact-mail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        subject: formData.get("subject"),
+        message: formData.get("message"),
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message");
+    }
+
+    setStatus("Message sent successfully!");
+    form.reset();
+  } catch {
+    setStatus("Failed to send. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
   return (
     <section id='reach-out' className='py-16 bg-linear-to-b from-gray-200 via-cyan-100 to-gray-200 dark:bg-linear-to-b dark:from-gray-800 dark:via-cyan-800 dark:to-gray-800'>
 <SectionHeading
@@ -64,7 +109,7 @@ const Contact = () => {
         {/* contact form */}
         <div data-aos="zoom-in-left" data-aos-delay={250}
      data-aos-easing="ease-in-out" data-aos-anchor-placement="top-center">
-            <form className='bg-amber-50 dark:bg-slate-900 rounded-3xl p-8 space-y-6'>
+            <form onSubmit={handleSubmit} className='bg-amber-50 dark:bg-slate-900 rounded-3xl p-8 space-y-6'>
                 <div className='grid sm:grid-cols-2 gap-4 '>
                     <div className='space-y-2'>
                         <label htmlFor="name" className='text-sm font-medium ml-2'>Full Name</label>
@@ -72,7 +117,7 @@ const Contact = () => {
                     </div>
                      <div className='space-y-2'>
                         <label htmlFor="email" className='text-sm font-medium ml-1'>Email</label>
-                        <Input id='email' name='email' placeholder='fullname@example.com' required className='bg-stone-100 my-1'/>
+                        <Input type="email" id='email' name='email' placeholder='fullname@example.com' required className='bg-stone-100 my-1'/>
                     </div>
 
 
@@ -91,10 +136,17 @@ const Contact = () => {
                     <Textarea id='message' name='message' placeholder='Tell about your ideas....' 
                     required rows={8} className='bg-stone-100 h-40 my-1'/>
                 </div>
-                <Button type='submit' size={"lg"} className='w-full cursor-pointer'>
-                    <Send className='w-4 h-4 mr-2 my-1'/>
-                    Send Message
-                </Button>
+              <Button
+  type="submit"
+  size="lg"
+  disabled={loading}
+  className='w-full cursor-pointer'
+>
+  <Send className='w-4 h-4 mr-2 my-1'/>
+  {loading ? "Sending..." : "Send Message"}
+</Button>
+
+<p role="status" aria-live="polite">{status}</p>
             </form>
         </div>
          

@@ -40,9 +40,9 @@ const Nav = ({openNav}:NavProps) => {
         {/* {Navlinks} */}
         <div className='hidden lg:flex items-center space-x-10'>
           {Navlinks.map((link, index) => {
-            return (<Link key={index} href={link.href} className='dark:text-teal-300 text-cyan-900 hover:text-amber-500  dark:hover:text-amber-100 font-semibold transition-all duration-300'>
+            return (<a key={index} href={link.href} className='dark:text-teal-300 text-cyan-900 hover:text-amber-500  dark:hover:text-amber-100 font-semibold transition-all duration-300'>
               <p>{link.name}</p>
-            </Link>
+            </a>
             );
           })}
         </div>
