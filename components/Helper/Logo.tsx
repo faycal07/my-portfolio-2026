@@ -3,7 +3,7 @@ import React from 'react'
 
 const Logo = () => {
   return (
-    <div className='flex items-center space-x-2'>
+    <a href="/" className='flex items-center space-x-2'>
         <div className='bg-cyan-900 dark:bg-teal-300 w-10 h-10 rounded-md flex items-center justify-center flex-col'>
           <Rotate3d className='text-white w-6 h-6' />  
         </div>
@@ -11,7 +11,7 @@ const Logo = () => {
             {"FM Port"}
         </h1>
       
-    </div>
+    </a>
   )
 }
 
